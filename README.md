@@ -1,8 +1,11 @@
-# 📚 WebSocket DLL for 易语言（EPL）—— 完整使用文档 v4.1
+# 📚 WebSocket DLL for 易语言（EPL）—— 完整使用文档 v1.1
 
 > 专为易语言打造的高性能 WebSocket 动态链接库
 >  支持服务端/客户端、WS/WSS、AES-256-GCM 加密、防重放、心跳保活、自动重连等企业级特性
 
+------
+## 💰扫码赞助
+<img src="./img/skm.png" width="300">
 ------
 
 ## ✅ 一、核心特性
