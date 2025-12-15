@@ -5,7 +5,7 @@
 
 ------
 ## 💰扫码赞助
-<img src="./img/skm.png" width="300">
+<img src="./img/skm.png" width="800">
 ------
 
 ## ✅ 一、核心特性
