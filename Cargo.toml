@@ -1,0 +1,61 @@
+[package]
+name = "websocket_epl"
+version = "3.1.0"
+edition = "2021"
+
+# 编译为动态链接库（DLL），供 Windows 易语言调用
+[lib]
+crate-type = ["cdylib"]
+
+# 优化发布版：小体积 + 高性能 + 无 panic 回溯
+[profile.release]
+opt-level = "s"           # 优化大小
+lto = true                # 链接时优化
+codegen-units = 1         # 减少并行编译单元，提升 LTO 效果
+panic = "abort"           # 简化错误处理，避免 unwind 开销
+
+# 依赖项（全部使用 2025 年仍广泛支持的稳定版本）
+[dependencies]
+# 异步运行时
+tokio = { version = "1", features = ["full"] }
+
+# WebSocket 核心库（含 TLS 支持）
+tokio-tungstenite = { version = "0.25", features = ["native-tls"] } # 启用 native-tls 支持
+tungstenite = "0.25"
+
+# 异步工具
+futures-util = "0.3"
+
+# URL 解析
+url = "2.5"
+
+# TLS 加密（用于 WSS）
+native-tls = "0.2"
+tokio-native-tls = "0.3"
+
+# 全局单例 & 线程安全
+once_cell = "1.19"
+parking_lot = "0.12"      # 更快的 Mutex / RwLock
+
+# 字符编码（GBK ↔ UTF-8）
+encoding_rs = "0.8"
+
+# 日志（仅用于调试输出）
+log = "0.4"
+
+# AES-GCM 加密（端到端安全通信）
+aes-gcm = { version = "0.10", features = ["std"] }
+
+# JSON 序列化（用于封装加密消息）
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# 随机数生成（用于 nonce）
+rand = "0.8"
+
+# 时间戳（防重放攻击）
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+
+# Base64 编码（用于传输二进制密文）
+base64 = "0.22"
+libc = "0.2"
